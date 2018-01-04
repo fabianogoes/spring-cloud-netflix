@@ -17,3 +17,5 @@ service-person/mvnw.cmd
 service-person/logs
 
 
+logs
+nohup.out

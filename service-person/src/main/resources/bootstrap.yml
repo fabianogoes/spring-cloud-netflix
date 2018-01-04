@@ -17,6 +17,3 @@ eureka:
     preferIpAddress: true
     nonSecurePort: ${server.port}
     managementPort: ${server.port}
-    statusPageUrl: https://${eureka.hostname}/info
-    healthCheckUrl: https://${eureka.hostname}/health
-    homePageUrl: https://${eureka.hostname}/

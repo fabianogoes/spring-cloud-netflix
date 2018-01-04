@@ -18,17 +18,6 @@ logging:
     org.springframework.web: INFO
 #    org.springframework.web.data: INFO
 
-# ----------------------------------------
-# ACTUATOR PROPERTIES
-# ----------------------------------------
-endpoints:
-  enabled: true
-  actuator:
-    enabled: true
-  configprops:
-    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
-  env:
-    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
 
 messages:
   basename: messages
@@ -44,7 +33,20 @@ management:
   security:
     enabled: false
 
-eureka:
-  client:
-    healthcheck:
-      enabled: true
+#eureka:
+#  client:
+#    healthcheck:
+#      enabled: true
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+endpoints:
+  enabled: true
+  actuator:
+    enabled: true
+  configprops:
+    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
+  env:
+    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
+
