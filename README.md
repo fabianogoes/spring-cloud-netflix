@@ -7,3 +7,5 @@
 * Service Discovery (Eureka)
 * Spring Boot Admin
 * REST API
+* Swagger
+* Lombok
