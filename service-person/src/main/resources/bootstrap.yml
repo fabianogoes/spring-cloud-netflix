@@ -3,13 +3,13 @@ spring:
     name: service-person
 
 server:
-  port: 8081
+  port: ${PORT:8081}
   display-name: ${spring.application.name}
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${DISCOVERY_URL:http://localhost:8761/eureka/}
   instance:
     appname: ${spring.application.name}
     leaseRenewalIntervalInSeconds: 1

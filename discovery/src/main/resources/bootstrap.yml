@@ -3,7 +3,7 @@ spring:
     name: eureka-server
 
 server:
-  port: 8761
+  port: ${PORT:8761}
   display-name: ${spring.application.name}
 
 # By default, the registry will also attempt to register itself, so you’ll need to disable that, as well.
