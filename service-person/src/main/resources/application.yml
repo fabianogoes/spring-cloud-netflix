@@ -1,0 +1,50 @@
+service-person:
+  display-name: service-person
+
+info:
+  name: ${service-person.display-name}
+  version: @project.version@
+
+logging:
+  file: logs/${service-person.display-name}.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    root: INFO
+    com.netflix.discovery: INFO
+    com.example: DEBUG
+    org.apache.http: INFO
+    org.springframework.web: INFO
+#    org.springframework.web.data: INFO
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+endpoints:
+  enabled: true
+  actuator:
+    enabled: true
+  configprops:
+    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
+  env:
+    keys-to-sanitize: "password,secret,key,token,.*credentials.*,vcap_services, .*mongo.*, .*datasource.*"
+
+messages:
+  basename: messages
+  default:
+    country: BR
+    language: PT
+    encoding: UTF-8
+
+management:
+  info:
+    git:
+      mode: full
+  security:
+    enabled: false
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true

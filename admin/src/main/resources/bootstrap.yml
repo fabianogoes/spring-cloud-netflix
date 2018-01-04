@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-admin
+
+server:
+  port: 8181
+  display-name: ${spring.application.name}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    appname: ${spring.application.name}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    preferIpAddress: true
+    nonSecurePort: ${server.port}
+    managementPort: ${server.port}

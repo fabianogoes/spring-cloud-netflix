@@ -1,0 +1,30 @@
+eureka-server:
+  display-name: eureka-server
+
+info:
+  name: ${eureka-server.display-name}
+  version: @project.version@
+
+messages:
+  basename: messages
+  default:
+    country: BR
+    language: PT
+    encoding: UTF-8
+
+# When the registry starts up it will complain, with a stacktrace, that there are no replica nodes for the registry to connect to.
+# In a production environment, you will want more than one instance of the registry.
+# For our simple purposes, however, it sufficies to disable the relevant logging.
+logging:
+  file: logs/${eureka-server.display-name}.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    com.netflix.eureka: INFO
+    com.netflix.discovery: INFO
+
+# https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+management:
+  security:
+    enabled: false

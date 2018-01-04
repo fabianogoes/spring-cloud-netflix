@@ -1,0 +1,47 @@
+spring-admin:
+  display-name: spring-admin
+
+info:
+  name: ${spring-admin.display-name}
+
+logging:
+  file: logs/${spring-admin.display-name}.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    com:
+      cnova: INFO
+    org:
+      springframework:
+        web: INFO
+
+# https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+spring:
+  boot:
+    admin:
+      username: "${security.user.name}"       #These two are needed so that the client
+      password: "${security.user.password}"   #can register at the protected server api
+      client:
+        metadata:
+          user.name: "${security.user.name}"          #These two are needed so that the server
+          user.password:  "${security.user.password}" #can access the proteceted client endpoints
+      routes:
+        endpoints: env, metrics, trace, jolokia, info, configprops
+
+management:
+  security:
+    enabled: true
+
+security:
+  user:
+    name: admin
+    password: admin
+
+# Since Spring Boot 1.5.x all endpoints are secured by default.
+# For the sake of brevity we’re disabling the security for now.
+# Have a look at the security section on how to deal with secured endpoints: http://codecentric.github.io/spring-boot-admin/1.5.6/#securing-spring-boot-admin.
+management.security.enabled: false
+
+
+

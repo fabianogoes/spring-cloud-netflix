@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+  display-name: ${spring.application.name}
+
+# By default, the registry will also attempt to register itself, so you’ll need to disable that, as well.
+eureka:
+  instance:
+    appname: ${spring.application.name}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    preferIpAddress: true
+    nonSecurePort: ${server.port}
+    managementPort: ${server.port}
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
